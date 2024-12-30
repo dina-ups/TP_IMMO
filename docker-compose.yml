@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: tp_mysql_new
+    ports:
+      - "3309:3309"
+    environment:
+      MYSQL_ROOT_PASSWORD: yourpassword
+      MYSQL_DATABASE: TP_IMMO
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d # Charge automatiquement le fichier schema.sql au démarrage
+
+  php:
+    build:
+      context: . #Dossier où se trouve le Dockerfile
+      dockerfile: Dockerfile
+    container_name: tp_php_new
+    ports:
+      - "8081:80"
+    volumes:
+      - ./php:/var/www/html # Monte les fichiers PHP dans le conteneur
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
