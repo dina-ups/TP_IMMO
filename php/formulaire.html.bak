@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Client</title>
+</head>
+<body>
+    <h2>Inscription dans une agence</h2>
+    <form action="inscription.php" method="POST">
+        <label for="idc">Identifiant Client (IDC):</label><br>
+        <input type="text" id="idc" name="idc" required><br><br>
+
+        <label for="ida">Identifiant Agence (IDA):</label><br>
+        <input type="text" id="ida" name="ida" required><br><br>
+
+        <input type="submit" value="S'inscrire">
+    </form>
+</body>
+</html>
